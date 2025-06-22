@@ -10,6 +10,7 @@ from leaf_airflow_operator.operators.leaf_operator import (
 from leaf_airflow_operator.sensors.leaf_sensor import LeafBatchStatusSensor
 from datetime import datetime, timedelta
 import uuid
+import requests
 
 ZIP_URL = "https://dev.fieldview.com/sample-agronomic-data/Planting_Harvesting_data_04_18_2018_21_46_18.zip"
 LOCAL_ZIP_PATH = "/tmp/fieldview_data.zip"

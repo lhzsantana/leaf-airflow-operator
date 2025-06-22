@@ -38,5 +38,3 @@ with DAG(
     )
 
     t_auth >> t_create_field
-
-#Version 1.0.18
