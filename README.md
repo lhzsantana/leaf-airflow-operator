@@ -45,7 +45,9 @@ airflow users create \
 export AIRFLOW__CORE__DAGS_FOLDER=<PATH TO YOUR DAGS FOLDER>
 
 ### Start Airflow
+
 pkill -f airflow
+
 airflow webserver --port 8080 &
 airflow scheduler &
 
