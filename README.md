@@ -1,6 +1,6 @@
 # Leaf Airflow Operator
 
-A custom Apache Airflow operator and hook to interact with the Leaf Agriculture API.
+A custom Apache Airflow operator and hook to interact with the Leaf Agriculture API. Lear more here: https://learn.withleaf.io/docs/
 
 ## Features
 - Satellite field creation
