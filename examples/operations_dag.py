@@ -31,6 +31,7 @@ with DAG(
     t_upload = LeafBatchUploadOperator(
         task_id='upload_zip_to_leaf',
         file_path=LOCAL_ZIP_PATH,
+        leaf_user_id='',
         destination_type='ISOXML',
         headers={'Authorization': f'Bearer {LEAF_TOKEN}'}
     )
