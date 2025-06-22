@@ -3,8 +3,9 @@
 A custom Apache Airflow operator and hook to interact with the Leaf Agriculture API.
 
 ## Features
-- Simple wrapper for REST API calls to Leaf.
-- Supports GET/POST requests with JSON payload.
+- Satellite field creation
+- Field creation
+- Batch upload and monitoring
 
 ## Usage
 ```python
