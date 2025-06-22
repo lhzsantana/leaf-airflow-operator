@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Airflow metadata and logs
+airflow.db
+airflow-webserver.pid
+logs/
+unittests.cfg
+.pytest_cache/
+
+# MacOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Python test output
+*.log
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+coverage.xml
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Secrets or local configs (if any)
+.env
+.env.*
+
+# Jupyter (if used for dev)
+.ipynb_checkpoints/
