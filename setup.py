@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='leaf-airflow-operator',
-    version='0.1.4',
+    version='0.1.5',
     description='Custom Apache Airflow operator to interact with Leaf Agriculture API',
     author='Luiz Henrique Zambom Santana',
     packages=find_packages(),
