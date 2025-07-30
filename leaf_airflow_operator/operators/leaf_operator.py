@@ -4,13 +4,14 @@ from leaf_airflow_operator.hooks.leaf_hook import LeafHook
 import requests
 
 class LeafAuthenticateOperator(BaseOperator):
-    def __init__(self, username, password, **kwargs):
+    def __init__(self, username, password, base_url="https://api.withleaf.io", **kwargs):
         super().__init__(**kwargs)
         self.username = username
         self.password = password
+        self.base_url = base_url
 
     def execute(self, context):
-        url = "https://api.withleaf.io/api/authenticate"
+        url = f"{self.base_url}/api/authenticate"
         headers = {"Content-Type": "application/json"}
         data = {"username": self.username, "password": self.password}
         response = requests.post(url, json=data, headers=headers)
@@ -29,7 +30,7 @@ class LeafBatchUploadOperator(BaseOperator):
         ti = context['ti']
         token = ti.xcom_pull(key='leaf_token')
         headers = {'Authorization': f'Bearer {token}'}
-        hook = LeafHook()
+        hook = LeafHook(base_url=self.base_url)
         return hook.upload_batch_file(self.file_path, self.leaf_user_id, self.provider, headers)
 
 class LeafCreateSatelliteFieldOperator(BaseOperator):
@@ -46,7 +47,7 @@ class LeafCreateSatelliteFieldOperator(BaseOperator):
         token = ti.xcom_pull(key='leaf_token')
         headers = {'Authorization': f'Bearer {token}'}
 
-        hook = LeafHook()
+        hook = LeafHook(base_url=self.base_url)
         result = hook.create_satellite_field(
             geometry=self.geometry,
             external_id=self.external_id,
@@ -70,7 +71,7 @@ class LeafCreateFieldOperator(BaseOperator):
         token = ti.xcom_pull(key='leaf_token')
         headers = {'Authorization': f'Bearer {token}'}
 
-        hook = LeafHook()
+        hook = LeafHook(base_url=self.base_url)
         result = hook.create_field(
             self.name, 
             self.geometry, 
