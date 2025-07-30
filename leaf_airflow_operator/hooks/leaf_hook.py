@@ -1,7 +1,8 @@
 import requests
 
 class LeafHook:
-    base_url = "https://api.withleaf.io"
+    def __init__(self, base_url="https://api.withleaf.io"):
+        self.base_url = base_url
 
     def run(self, endpoint, method, headers, data=None):
         url = f"{self.base_url}{endpoint}"
