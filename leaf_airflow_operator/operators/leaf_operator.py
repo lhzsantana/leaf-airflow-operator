@@ -20,11 +20,12 @@ class LeafAuthenticateOperator(BaseOperator):
         context['ti'].xcom_push(key='leaf_token', value=token_info['id_token'])
 
 class LeafBatchUploadOperator(BaseOperator):
-    def __init__(self, file_path, leaf_user_id, provider="Other", **kwargs):
+    def __init__(self, file_path, leaf_user_id, provider="Other", base_url="https://api.withleaf.io", **kwargs):
         super().__init__(**kwargs)
         self.file_path = file_path
         self.leaf_user_id = leaf_user_id
         self.provider = provider
+        self.base_url = base_url 
 
     def execute(self, context):
         ti = context['ti']
@@ -34,13 +35,14 @@ class LeafBatchUploadOperator(BaseOperator):
         return hook.upload_batch_file(self.file_path, self.leaf_user_id, self.provider, headers)
 
 class LeafCreateSatelliteFieldOperator(BaseOperator):
-    def __init__(self, external_id, geometry, providers, start_date=None, days_before=None, **kwargs):
+    def __init__(self, external_id, geometry, providers, start_date=None, days_before=None, base_url="https://api.withleaf.io", **kwargs):
         super().__init__(**kwargs)
         self.external_id = external_id
         self.geometry = geometry
         self.providers = providers
         self.start_date = start_date
         self.days_before = days_before
+        self.base_url = base_url 
 
     def execute(self, context):
         ti = context['ti']
@@ -60,11 +62,12 @@ class LeafCreateSatelliteFieldOperator(BaseOperator):
         return result
 
 class LeafCreateFieldOperator(BaseOperator):
-    def __init__(self, name, geometry, leaf_user_id, **kwargs):
+    def __init__(self, name, geometry, leaf_user_id, base_url="https://api.withleaf.io", **kwargs):
         super().__init__(**kwargs)
         self.name = name
         self.geometry = geometry
         self.leaf_user_id = leaf_user_id
+        self.base_url = base_url 
 
     def execute(self, context):
         ti = context['ti']
